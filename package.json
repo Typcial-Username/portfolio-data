@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "husky": "^9.1.7",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "validate": "tsx scripts/validateProjects.ts",
+    "build": "tsx scripts/buildProjects.ts"
+  }
+}
