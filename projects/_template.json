@@ -1,0 +1,22 @@
+{
+    "id": "",
+    "title": "",
+    "description": "",
+    "course": "",
+    "files": {
+        "cad": [],
+        "stl": []
+    },
+    "media": {
+        "docs": [],
+        "images": [],
+        "modelViewer": "https://a360.co/"
+    },
+    "objectives": {
+        "RES": [],
+        "DMF": []
+    },
+    "repo": "Typcial-Username/abc",
+    "status": "in-progress",
+    "visibility": "public"
+}

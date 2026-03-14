@@ -12,6 +12,7 @@
   "scripts": {
     "prepare": "husky",
     "validate": "tsx scripts/validateProjects.ts",
-    "build": "tsx scripts/buildProjects.ts"
+    "build": "tsx scripts/buildProjects.ts",
+    "generateSchema": "tsx scripts/generateSchema.ts"
   }
 }

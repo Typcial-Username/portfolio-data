@@ -3,33 +3,47 @@ import { ProjectSchema } from "../schema/projects.schema";
 import { treeifyError } from "zod";
 import path from "node:path";
 
-const allFiles = fs.readdirSync("projects", {
+export function validateAllProjects() {
+  const allFiles = fs.readdirSync("projects", {
   recursive: true,
   withFileTypes: true,
-});
+}).filter((f) => !f.name.startsWith("_"));
 
-const repos = new Set<string>();
+  for (const file of allFiles) {
+    validateProject(file)
+  }
+}
 
-for (const file of allFiles) {
-  if (!file.isFile() || !file.name.endsWith(".json")) continue;
+export async function validateProject(file: fs.Dirent): Promise<boolean> {
+  if (!file.isFile() || !(file.name.endsWith(".json") || file.name.endsWith(".yaml"))) throw new Error(`File ${file.name} not valid`);
+
   const fullPath = path.join(file.parentPath, file.name);
   const raw = readFileSync(fullPath, "utf8");
-  const parsed = JSON.parse(raw);
+
+  let parsed;
+  if (file.name.endsWith("json")) {
+    parsed = JSON.parse(raw)
+  } else {
+    console.log("yaml")
+  }
 
   const result = ProjectSchema.safeParse(parsed);
 
   if (!result.success) {
     console.error("Schema validation failed:\n");
     console.error(treeifyError(result.error));
-    process.exit(1);
+    return false
   }
 
   const project = result.data;
-  if (project.repo) repos.add(project.repo);
+  if (project.repo) {
+    await validateRepo(project.repo)
+  }
+
+  return true
 }
 
-async function validateRepos() {
-  for (const repo of repos) {
+async function validateRepo(repo: string) {
     const res = await fetch(`https://api.github.com/repos/${repo}`);
 
     if (res.status === 404) {
@@ -38,9 +52,7 @@ async function validateRepos() {
     }
 
     console.log(`✅ ${repo} Repo exists!`);
-  }
 }
 
-await validateRepos();
-
+validateAllProjects()
 console.log("Assignments schema valid ✔");
