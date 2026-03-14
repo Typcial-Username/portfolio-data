@@ -29,82 +29,38 @@
       "type": "string"
     },
     "objectives": {
-      "type": "object",
-      "properties": {
-        "RES": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "code": {
-                "type": "string",
-                "enum": [
-                  "RES-1",
-                  "RES-2",
-                  "RES-3",
-                  "RES-4",
-                  "RES-5",
-                  "RES-6",
-                  "DMF-1",
-                  "DMF-2",
-                  "DMF-3",
-                  "DMF-4",
-                  "DMF-5",
-                  "DMF-6"
-                ]
-              },
-              "reason": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "code",
-              "reason"
-            ],
-            "additionalProperties": false
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "RES-1",
+              "RES-2",
+              "RES-3",
+              "RES-4",
+              "RES-5",
+              "RES-6",
+              "DMF-1",
+              "DMF-2",
+              "DMF-3",
+              "DMF-4",
+              "DMF-5",
+              "DMF-6"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
           }
         },
-        "DMF": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "code": {
-                "type": "string",
-                "enum": [
-                  "RES-1",
-                  "RES-2",
-                  "RES-3",
-                  "RES-4",
-                  "RES-5",
-                  "RES-6",
-                  "DMF-1",
-                  "DMF-2",
-                  "DMF-3",
-                  "DMF-4",
-                  "DMF-5",
-                  "DMF-6"
-                ]
-              },
-              "reason": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "code",
-              "reason"
-            ],
-            "additionalProperties": false
-          }
-        }
+        "required": [
+          "code",
+          "reason"
+        ],
+        "additionalProperties": false
       },
-      "required": [
-        "RES",
-        "DMF"
-      ],
-      "additionalProperties": false,
       "description": "The UAT degree objectives this project satisfies"
     },
     "media": {
@@ -136,13 +92,15 @@
         "cad": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "pattern": "\\.(f3d|f3z)$"
           }
         },
         "stl": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "pattern": "\\.stl$"
           }
         }
       },

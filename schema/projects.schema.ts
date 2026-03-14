@@ -21,31 +21,31 @@ const Objective = z.enum([
 ]);
 const ObjectiveEntry = z.object({
   code: Objective,
-  reason: z.string().min(1)
-})
-const Objectives = z.object({
-  RES: z.array(ObjectiveEntry),
-  DMF: z.array(ObjectiveEntry)
-}).describe("The UAT degree objectives this project satisfies").superRefine((arr, ctx) => {
-  const resCodes = arr.RES.map(o => o.code)
-  const dmfCodes = arr.RES.map(o => o.code)
+  reason: z.string().min(1),
+});
+const Objectives = z
+  .array(ObjectiveEntry)
+  .describe("The UAT degree objectives this project satisfies")
+  .superRefine((arr, ctx) => {
+    const codes = arr.map((o) => o.code);
 
-  const allCodes = [...resCodes, ...dmfCodes]
-  const duplicates = allCodes.filter((c, i) => allCodes.indexOf(c) !== i)
+    const duplicates = codes.filter((c, i) => codes.indexOf(c) !== i);
 
-  if (duplicates.length) {
-    ctx.addIssue({
-      code: "custom",
-      message: `Duplicate objective code: ${duplicates.join(", ")}`
-    })
-  }
-})
+    if (duplicates.length) {
+      ctx.addIssue({
+        code: "custom",
+        message: `Duplicate objective code: ${duplicates.join(", ")}`,
+      });
+    }
+  });
 const IMAGE_ROOT = path.resolve("images");
 const DOCS_ROOT = path.resolve("docs");
 
 const Status = z.enum(["complete", "in-progress", "prototype", "archived"]);
 
 const ImagePath = z.string().regex(/\.(png|jpg|jpeg|webp)$/i);
+const StlFilePath = z.string().regex(/\.stl$/i);
+const CadFilePath = z.string().regex(/\.(f3d|f3z)$/i);
 //#endregion
 
 export const MediaSchema = z
@@ -83,7 +83,9 @@ export const MediaSchema = z
 
 export const ProjectSchema = z.object({
   id: z.string(),
-  repo: RepoSlug.optional().nullable().describe("GitHub repoisitory in the owner/repo format"),
+  repo: RepoSlug.optional()
+    .nullable()
+    .describe("GitHub repoisitory in the owner/repo format"),
 
   title: z.string().describe("Project title shown on portfolio cards"),
   description: z.string().optional(),
@@ -94,8 +96,8 @@ export const ProjectSchema = z.object({
   media: MediaSchema.optional(),
   files: z
     .object({
-      cad: z.array(z.string()).optional(),
-      stl: z.array(z.string()).optional(),
+      cad: z.array(CadFilePath).optional(),
+      stl: z.array(StlFilePath).optional(),
     })
     .optional(),
 
@@ -107,4 +109,4 @@ export const ProjectsSchema = z.object({
   projects: z.array(ProjectSchema),
 });
 
-export type Projects = z.infer<typeof ProjectsSchema>;
+export type Project = z.infer<typeof ProjectSchema>;

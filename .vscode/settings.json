@@ -1,8 +1,11 @@
 {
-    "json.schemas": [
-        {
-            "fileMatch": ["projects/*.json"],
-            "url": "/schema/project.schema.json"
-        }
-    ]
+  "json.schemas": [
+    {
+      "fileMatch": ["projects/*.json"],
+      "url": "/schema/project.schema.json"
+    }
+  ],
+  "yaml.schemas": {
+    "schema/project.schema.json": ["projects/*.yaml"]
+  }
 }
