@@ -1,12 +1,13 @@
-import fs, { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { Project, ProjectSchema } from "../schema/projects.schema";
 import { treeifyError } from "zod";
 import path from "node:path";
 import YAML from "yaml";
 
+const PROJECT_ROOT = path.resolve("projects")
+
 export async function validateAllProjects() {
-  const allFiles = fs
-    .readdirSync("projects", {
+  const allFiles = readdirSync("projects", {
       recursive: true,
       withFileTypes: true,
     })
@@ -42,17 +43,75 @@ export async function validateAllProjects() {
 }
 
 export async function validateProject(project: Project) {
-  const result = ProjectSchema.safeParse(project);
-
-  if (!result.success) {
+  let result;
+  
+  try {
+    result = ProjectSchema.parse(project);
+  } catch (err) {
     console.error("Schema validation failed:\n");
-    console.error(treeifyError(result.error));
+    console.error(err);
     process.exit(1);
   }
 
-  const res = result.data;
-  if (project.repo) {
-    await validateRepo(project.repo);
+  // -- Validate files exist -- //
+  if (result.files?.cad) {
+    for (const cadFile of result.files.cad) {
+      const filePath = findFile(cadFile, `${PROJECT_ROOT}\\${project.id}\\files`)
+      
+      if (!filePath) return
+      
+      const fullPath = path.resolve(filePath)
+
+      if (!existsSync(fullPath)) {
+        throw new Error(`CAD file ${cadFile} not found.`)
+      }
+    } 
+  }
+
+  if (result.files?.stl) {
+    for (const stlFile of result.files.stl) {
+      const filePath = findFile(stlFile, `${PROJECT_ROOT}\\${project.id}\\files`)
+      
+      if (!filePath) return
+      
+      const fullPath = path.resolve(filePath)
+
+      if (!existsSync(fullPath)) {
+        throw new Error(`STL file ${stlFile} not found.`)
+      }
+    }
+  }
+
+  if (result.media?.images) {
+    for (const img of result.media.images) {
+       const filePath = findFile(img, `${PROJECT_ROOT}\\${project.id}\\images`)
+      
+      if (!filePath) return
+      
+      const fullPath = path.resolve(filePath)
+
+      if (!existsSync(fullPath)) {
+        throw new Error(`Image not found ${img}`)
+      }
+    }
+  }
+  
+  if (result.media?.docs) {
+    for (const doc of result.media.docs) {
+       const filePath = findFile(doc, `${PROJECT_ROOT}\\${project.id}\\files`)
+      
+      if (!filePath) return
+      
+      const fullPath = path.resolve(filePath)
+
+      if (!existsSync(fullPath)) {
+        throw new Error(`Document not found ${doc}`)
+      }
+    }
+  }
+
+  if (result.repo) {
+    await validateRepo(result.repo);
   }
 
   return project;
@@ -70,3 +129,20 @@ async function validateRepo(repo: string) {
 }
 
 await validateAllProjects();
+
+function findFile(fileName: string, startingPath: string) {
+  const fullStartingPath = path.resolve(startingPath)
+
+  if (!existsSync(fullStartingPath)) throw new Error(`${startingPath} does not exist`)
+
+  const allFiles = readdirSync(startingPath, {
+    recursive: true,
+    withFileTypes: true
+  })
+
+  for (const file of allFiles) {
+    if (file.name == fileName)  return file.parentPath + "\\" + file.name
+  }
+
+  return null
+}

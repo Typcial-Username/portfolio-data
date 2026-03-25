@@ -26,7 +26,10 @@
     },
     "course": {
       "description": "Course this project was created for",
-      "type": "string"
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "pattern": "[A-Z]{3}[0-9]{3}"
     },
     "objectives": {
       "type": "array",
@@ -71,6 +74,13 @@
           "items": {
             "type": "string",
             "pattern": "\\.(png|jpg|jpeg|webp)$"
+          }
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
           }
         },
         "docs": {

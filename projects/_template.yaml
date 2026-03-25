@@ -1,17 +1,15 @@
-id: 
-title: 
-description: 
-course: 
+id: template
+title: Template
+description: Template description
+course: TMP000
 files:
-  cad:
-  stl: 
+  cad: []
+  stl: []
 media:
-  docs": []
-  images": []
-  modelViewer": https://a360.co/
-objectives:
-  RES:
-  DMF:
-repo": Typcial-Username/abc
-status": in-progress
-visibility": public
+  docs: []
+  images: []
+  modelViewer: https://a360.co/
+objectives: []
+repo: Typcial-Username/abc
+status: in-progress
+visibility: public

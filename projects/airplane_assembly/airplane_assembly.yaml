@@ -1,0 +1,15 @@
+id: airplane_asselbly
+title: Airplane Assembly
+description: Template description
+course: DBM100
+files:
+  cad: []
+  stl: []
+media:
+  docs: []
+  images: []
+  modelViewer: https://a360.co/
+objectives: []
+# repo: Typcial-Username/abc
+status: complete
+visibility: public
