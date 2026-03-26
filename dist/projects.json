@@ -45,6 +45,11 @@
       "description": "Build a marble run out of cardboard",
       "course": "DBM215",
       "media": {
+        "images": [
+          "empty.jpg",
+          "mid.jpg",
+          "end.jpg"
+        ],
         "videos": [
           "https://youtube.com/shorts/_YLQQtTR3QI"
         ]
@@ -59,6 +64,29 @@
           "reason": "Techniques such as scoring to bend, strategic use of hot-glue, and utilizing support structures to allow for specific routes were all used."
         }
       ],
+      "status": "complete",
+      "visibility": "public"
+    },
+    {
+      "id": "motor_speed_controller",
+      "title": "Motor Speed Controller",
+      "description": "Create a circuit that uses PWM to control a DC motor via a motor controller.",
+      "course": "RBT211",
+      "media": {
+        "docs": [
+          "motor_speed_controller.pdf"
+        ],
+        "videos": [
+          "https://www.youtube.com/shorts/LI2515mfMRE"
+        ]
+      },
+      "objectives": [
+        {
+          "code": "RES-2",
+          "reason": "Uses timers, PWM, and interupts to control a DC motor on a Arduino Uno."
+        }
+      ],
+      "repo": "Typcial-Username/rbt211",
       "status": "complete",
       "visibility": "public"
     }

@@ -1,0 +1,13 @@
+id: coffee_mug
+title: Design a coffee mug
+description: Template description
+course: DBM100
+media:
+  docs:
+    - Coffee_Cup_Drawing.pdf
+  modelViewer: https://a360.co/
+objectives:
+  - code: DMF-3
+    reason: a
+status: complete
+visibility: public
