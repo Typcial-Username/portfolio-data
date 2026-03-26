@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD:projects/_template.json
   "id": "json",
   "title": "",
   "description": "",
@@ -18,27 +17,3 @@
   "status": "in-progress",
   "visibility": "public"
 }
-=======
-    "id": "",
-    "title": "",
-    "description": "",
-    "course": "",
-    "files": {
-        "cad": [],
-        "stl": []
-    },
-    "media": {
-        "docs": [],
-        "images": [],
-        "videos": [],
-        "modelViewer": "https://a360.co/"
-    },
-    "objectives": {
-        "RES": [],
-        "DMF": []
-    },
-    "repo": "Typcial-Username/abc",
-    "status": "in-progress",
-    "visibility": "public"
-}
->>>>>>> 380e445672750b7c0e0cadc0c97cd01f0779d1d4:projects/_template/_template.json

@@ -3,13 +3,13 @@ title: Cardboard Marble Run
 description: Build a marble run out of cardboard
 course: DBM215
 media:
-  images: 
+  images:
     - empty.jpg
     - mid.jpg
     - end.jpg
   videos:
-   - https://youtube.com/shorts/_YLQQtTR3QI
-objectives: 
+    - https://youtube.com/shorts/_YLQQtTR3QI
+objectives:
   - code: DMF-2
     reason: This project was developed in cardboard using CAD (Cardboard-Aided Design). I learned techniques to manipulate and work with cardboard to complete projects.
   - code: DMF-4

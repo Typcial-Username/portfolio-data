@@ -60,7 +60,7 @@ for (const file of allFiles) {
     }
   }
 
-  if (validated.repo) ids.add(validated.id);
+  if (validated.repo) ids.add(validated.repo);
   projects.push(validated);
 }
 
@@ -92,13 +92,66 @@ async function fetchGitHubStats(query: string) {
     }),
   });
   const json = await res.json();
-  return json.data;
+  return normalizeRepos(json.data);
+}
+
+type Repo = {
+  name: string;
+  description: string | null;
+  url: string;
+  homepageUrl: string | null;
+  pushedAt: string;
+  stargazerCount: number;
+  repositoryTopics: { nodes: { topic: { name: string } }[] };
+  languages: {
+    totalSize: number;
+    edges: {
+      size: number;
+      node: { name: string; color: string };
+    }[];
+  };
+};
+
+function normalizeRepos(data: Record<string, Repo>): Repo[] {
+  return Object.values(data);
+}
+
+function createRepoMap(repos: Repo[]) {
+  return new Map(repos.map((repo) => [repo.name.toLowerCase(), repo]));
+}
+
+function mergeProjectsWithRepos(
+  projects: Project[],
+  repoMap: Map<string, Repo>,
+) {
+  return projects.map((project) => {
+    const repoName = project.repo?.toLowerCase();
+
+    const repo = repoName ? repoMap.get(repoName) : undefined;
+
+    return {
+      ...project,
+      repo: repo
+        ? {
+            github: {
+              url: repo.url,
+              homepageUrl: repo.homepageUrl,
+              pushedAt: repo.pushedAt,
+              stars: repo.stargazerCount,
+              topics: repo.repositoryTopics,
+              languages: repo.languages.edges,
+              lastUpdated: repo.pushedAt,
+            },
+          }
+        : null,
+    };
+  });
 }
 
 function buildRepoQuery(repos: string[]) {
-  let query = "";
+  let query = "query {";
 
-  const fields = repos.map((repo, i) => {
+  repos.map((repo, i) => {
     const [owner, name] = repo.split("/");
 
     query += `
@@ -125,7 +178,7 @@ function buildRepoQuery(repos: string[]) {
     `;
   });
 
-  return `query { ${fields} }`;
+  return query + "\n}";
 }
 
 function normalizeLanguages(languages: Record<string, number>) {
@@ -164,56 +217,39 @@ type CoverageResult<T extends string> = {
   percent: number;
   complete: boolean;
 };
-  key: T;
-  count: number;
-  required: number;
-  percent: number;
-  complete: boolean;
-};
 
 export function getCoverage<const T extends readonly string[]>(
   map: Map<T[number], number>,
   allKeys: T,
   required: number,
 ) /*: CoverageResult<T>[]*/ {
-  required: number,
-) /*: CoverageResult<T>[]*/ {
-  return allKeys.map((key) => {
-    const count = map.get(key) ?? 0;
-    const percent = Math.min((count / required) * 100, 100);
-    const count = map.get(key) ?? 0;
-    const percent = Math.min((count / required) * 100, 100);
+  {
+    return allKeys.map((key) => {
+      const count = map.get(key) ?? 0;
+      const percent = Math.min((count / required) * 100, 100);
 
-    return {
-      key,
-      count,
-      required,
-      percent,
-      complete: count >= required,
-    };
-  });
-    };
-  });
+      return {
+        key,
+        count,
+        required,
+        percent,
+        complete: count >= required,
+      };
+    });
+  }
 }
 
 export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
   const missing = results.filter((r) => !r.complete);
-export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
-  const missing = results.filter((r) => !r.complete);
 
-  console.log("\n=== OBJECTIVE COVERAGE ===\n");
   console.log("\n=== OBJECTIVE COVERAGE ===\n");
 
   for (const r of results) {
-    const filled = Math.round((r.count / r.required) * 10);
-    const bar = "█".repeat(filled) + "░".repeat(10 - filled);
-    const filled = Math.round((r.count / r.required) * 10);
+    let filled = Math.min(Math.round((r.count / r.required) * 10), 10);
     const bar = "█".repeat(filled) + "░".repeat(10 - filled);
 
     const coloredBar = colorize(r.percent, bar);
-    const coloredBar = colorize(r.percent, bar);
 
-    const status = r.complete ? "✅" : "❌";
     const status = r.complete ? "✅" : "❌";
 
     console.log(
@@ -275,25 +311,25 @@ export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
   } else {
     console.log("Almost done 🔥");
   }
-}
 
-function groupBy<T, K extends string>(
-  arr: T[],
-  getKey: (item: T) => K,
-): Record<K, T[]> {
-  return arr.reduce(
-    (acc, item) => {
-      const key = getKey(item);
-      if (!acc[key]) acc[key] = [];
-      acc[key].push(item);
-      return acc;
-    },
-    {} as Record<K, T[]>,
-  );
-}
+  function groupBy<T, K extends string>(
+    arr: T[],
+    getKey: (item: T) => K,
+  ): Record<K, T[]> {
+    return arr.reduce(
+      (acc, item) => {
+        const key = getKey(item);
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+      },
+      {} as Record<K, T[]>,
+    );
+  }
 
-function colorize(percent: number, text: string) {
-  if (percent <= 33) return `\x1b[31m${text}\x1b[0m`; // red
-  if (percent <= 66) return `\x1b[33m${text}\x1b[0m`; // yellow
-  return `\x1b[32m${text}\x1b[0m`; // green
+  function colorize(percent: number, text: string) {
+    if (percent <= 33) return `\x1b[31m${text}\x1b[0m`; // red
+    if (percent <= 66) return `\x1b[33m${text}\x1b[0m`; // yellow
+    return `\x1b[32m${text}\x1b[0m`; // green
+  }
 }

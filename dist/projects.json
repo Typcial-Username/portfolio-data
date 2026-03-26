@@ -68,6 +68,26 @@
       "visibility": "public"
     },
     {
+      "id": "coffee_mug",
+      "title": "Design a coffee mug",
+      "description": "Template description",
+      "course": "DBM100",
+      "media": {
+        "docs": [
+          "Coffee_Cup_Drawing.pdf"
+        ],
+        "modelViewer": "https://a360.co/"
+      },
+      "objectives": [
+        {
+          "code": "DMF-3",
+          "reason": "a"
+        }
+      ],
+      "status": "complete",
+      "visibility": "public"
+    },
+    {
       "id": "motor_speed_controller",
       "title": "Motor Speed Controller",
       "description": "Create a circuit that uses PWM to control a DC motor via a motor controller.",
@@ -87,6 +107,31 @@
         }
       ],
       "repo": "Typcial-Username/rbt211",
+      "status": "complete",
+      "visibility": "public"
+    },
+    {
+      "id": "project_pen_assembly",
+      "title": "Project Pen Assembly",
+      "description": "Create a pen with multiple components and form an assembly",
+      "course": "DBM100",
+      "files": {
+        "cad": [
+          "Pen.f3d"
+        ]
+      },
+      "media": {
+        "videos": [
+          "https://youtu.be/WOPf5bOiLoE"
+        ],
+        "modelViewer": "https://a360.co/3Z8JcMa"
+      },
+      "objectives": [
+        {
+          "code": "DMF-3",
+          "reason": "Re-creates a pen."
+        }
+      ],
       "status": "complete",
       "visibility": "public"
     }
