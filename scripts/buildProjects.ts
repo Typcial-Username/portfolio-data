@@ -164,13 +164,23 @@ type CoverageResult<T extends string> = {
   percent: number;
   complete: boolean;
 };
+  key: T;
+  count: number;
+  required: number;
+  percent: number;
+  complete: boolean;
+};
 
 export function getCoverage<const T extends readonly string[]>(
   map: Map<T[number], number>,
   allKeys: T,
   required: number,
 ) /*: CoverageResult<T>[]*/ {
+  required: number,
+) /*: CoverageResult<T>[]*/ {
   return allKeys.map((key) => {
+    const count = map.get(key) ?? 0;
+    const percent = Math.min((count / required) * 100, 100);
     const count = map.get(key) ?? 0;
     const percent = Math.min((count / required) * 100, 100);
 
@@ -182,19 +192,28 @@ export function getCoverage<const T extends readonly string[]>(
       complete: count >= required,
     };
   });
+    };
+  });
 }
 
 export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
   const missing = results.filter((r) => !r.complete);
+export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
+  const missing = results.filter((r) => !r.complete);
 
+  console.log("\n=== OBJECTIVE COVERAGE ===\n");
   console.log("\n=== OBJECTIVE COVERAGE ===\n");
 
   for (const r of results) {
     const filled = Math.round((r.count / r.required) * 10);
     const bar = "█".repeat(filled) + "░".repeat(10 - filled);
+    const filled = Math.round((r.count / r.required) * 10);
+    const bar = "█".repeat(filled) + "░".repeat(10 - filled);
 
     const coloredBar = colorize(r.percent, bar);
+    const coloredBar = colorize(r.percent, bar);
 
+    const status = r.complete ? "✅" : "❌";
     const status = r.complete ? "✅" : "❌";
 
     console.log(
@@ -232,7 +251,7 @@ export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
         Code: r.key,
         Needed: `${r.required - r.count}x`,
         Current: r.count,
-        Required: `${r.required}x`,
+        Required: r.required,
       }));
 
     console.table(tableData);

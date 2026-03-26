@@ -1,0 +1,15 @@
+id: motor_speed_controller
+title: Motor Speed Controller
+description: Create a circuit that uses PWM to control a DC motor via a motor controller.
+course: RBT211
+media:
+  docs:
+    - motor_speed_controller.pdf
+  videos:
+    - https://www.youtube.com/shorts/LI2515mfMRE
+objectives:
+  - code: RES-2
+    reason: Uses timers, PWM, and interupts to control a DC motor on a Arduino Uno.
+repo: Typcial-Username/rbt211
+status: complete
+visibility: public
