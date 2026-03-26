@@ -1,22 +1,19 @@
 {
-    "id": "",
-    "title": "",
-    "description": "",
-    "course": "",
-    "files": {
-        "cad": [],
-        "stl": []
-    },
-    "media": {
-        "docs": [],
-        "images": [],
-        "modelViewer": "https://a360.co/"
-    },
-    "objectives": {
-        "RES": [],
-        "DMF": []
-    },
-    "repo": "Typcial-Username/abc",
-    "status": "in-progress",
-    "visibility": "public"
+  "id": "json",
+  "title": "",
+  "description": "",
+  "course": "TMP000",
+  "files": {
+    "cad": [],
+    "stl": []
+  },
+  "media": {
+    "docs": [],
+    "images": [],
+    "modelViewer": "https://a360.co/"
+  },
+  "objectives": [],
+  "repo": "Typcial-Username/portfolio-data",
+  "status": "in-progress",
+  "visibility": "public"
 }

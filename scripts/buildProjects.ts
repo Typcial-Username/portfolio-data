@@ -12,7 +12,7 @@ const OUTPUT_FILE = "dist/projects.json";
 const projects: Project[] = [];
 const ids = new Set<string>();
 
-type Objective = z.infer<typeof Objective>
+type Objective = z.infer<typeof Objective>;
 
 const objCoverage = new Map<Objective, number>();
 
@@ -47,7 +47,7 @@ for (const file of allFiles) {
 
   const validated = await validateProject(parsed);
 
-  if (!validated) throw new Error("Project Error")
+  if (!validated) throw new Error("Project Error");
 
   if (ids.has(validated.id)) {
     console.error(`❌ Duplicate project id: "${validated.id}"`);
@@ -56,7 +56,7 @@ for (const file of allFiles) {
 
   if (validated.objectives) {
     for (const obj of validated.objectives) {
-      objCoverage.set(obj.code, (objCoverage.get(obj.code) ?? 0) + 1)
+      objCoverage.set(obj.code, (objCoverage.get(obj.code) ?? 0) + 1);
     }
   }
 
@@ -66,29 +66,17 @@ for (const file of allFiles) {
 
 for (const group of chunk<string>(toArr<string>(ids), 20)) {
   const query = buildRepoQuery(group);
-  await fetchGitHubStats(query);
+  const res = await fetchGitHubStats(query);
+
+  console.dir(res, { colors: true, depth: null });
 }
 
 mkdirSync(DIST_DIR, { recursive: true });
 
 writeFileSync(OUTPUT_FILE, JSON.stringify({ projects }, null, 2));
 
-// console.log("=== OBJECTIVE COVERAGE ===")
-
-const coverage = getCoverage(objCoverage, Objective.options, 2)
-printCoverage(coverage)
-// for (const r of coverage) {
-//   const bar = "█".repeat(r.percent / 10) + "-".repeat(10 - r.percent / 10)
-//   console.log(`${r.key} | ${bar} | ${r.count}/${r.required}`)
-// }
-
-// const overall =
-//   coverage.reduce((sum, r) => sum + r.percent, 0) / coverage.length
-
-// const missing = coverage.filter(r => !r.complete)
-
-// console.log("\n" + overall.toFixed(2) + "% ")
-// console.log(missing)
+const coverage = getCoverage(objCoverage, Objective.options, 2);
+printCoverage(coverage);
 
 console.log(`✅ Built ${projects.length} projects → ${OUTPUT_FILE}`);
 
@@ -170,21 +158,21 @@ function toArr<T>(set: Set<T>) {
 }
 
 type CoverageResult<T extends string> = {
-  key: T
-  count: number
-  required: number
-  percent: number
-  complete: boolean
-}
+  key: T;
+  count: number;
+  required: number;
+  percent: number;
+  complete: boolean;
+};
 
 export function getCoverage<const T extends readonly string[]>(
   map: Map<T[number], number>,
   allKeys: T,
-  required: number
-)/*: CoverageResult<T>[]*/ {
+  required: number,
+) /*: CoverageResult<T>[]*/ {
   return allKeys.map((key) => {
-    const count = map.get(key) ?? 0
-    const percent = Math.min((count / required) * 100, 100)
+    const count = map.get(key) ?? 0;
+    const percent = Math.min((count / required) * 100, 100);
 
     return {
       key,
@@ -192,103 +180,101 @@ export function getCoverage<const T extends readonly string[]>(
       required,
       percent,
       complete: count >= required,
-    }
-  })
+    };
+  });
 }
 
-export function printCoverage<T extends string>(
-  results: CoverageResult<T>[]
-) {
-  const missing = results.filter(r => !r.complete)
+export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
+  const missing = results.filter((r) => !r.complete);
 
-  console.log("\n=== OBJECTIVE COVERAGE ===\n")
+  console.log("\n=== OBJECTIVE COVERAGE ===\n");
 
   for (const r of results) {
-    const filled = Math.round((r.count / r.required) * 10)
-    const bar =
-      "█".repeat(filled) + "░".repeat(10 - filled)
+    const filled = Math.round((r.count / r.required) * 10);
+    const bar = "█".repeat(filled) + "░".repeat(10 - filled);
 
-    const coloredBar = colorize(r.percent, bar)
+    const coloredBar = colorize(r.percent, bar);
 
-    const status = r.complete ? "✅" : "❌"
+    const status = r.complete ? "✅" : "❌";
 
     console.log(
-      `${r.key.padEnd(6)} | ${coloredBar} | ${r.count}/${r.required} ${status}`
-    )
+      `${r.key.padEnd(6)} | ${coloredBar} | ${r.count}/${r.required} ${status}`,
+    );
   }
 
   const totalNeeded = results.reduce(
-  (sum, r) => sum + Math.max(0, r.required - r.count),
-  0
-)
+    (sum, r) => sum + Math.max(0, r.required - r.count),
+    0,
+  );
 
-const completed = results.filter(r => r.complete).length
+  const completed = results.filter((r) => r.complete).length;
 
   if (missing.length === 0) {
-    console.log("🎉 All objectives satisfied. You're done.")
-    return
+    console.log("🎉 All objectives satisfied. You're done.");
+    return;
   }
 
-// Group by prefix (before "-")
-  const groups = groupBy(
-    missing,
-    (r) => r.key.split("-")[0]
-  )
+  // Group by prefix (before "-")
+  const groups = groupBy(missing, (r) => r.key.split("-")[0]);
 
-  console.log("\n=== MISSING COVERAGE ===\n")
+  console.log("\n=== MISSING COVERAGE ===\n");
 
   for (const [group, items] of Object.entries(groups)) {
-    console.log(`== ${group} ==`)
+    console.log(`== ${group} ==`);
 
-    const tableData = items.sort((a, b) => {
-  const needDiff = (b.required - b.count) - (a.required - a.count)
-  if (needDiff !== 0) return needDiff
-  return a.key.localeCompare(b.key)
-})
-      .map(r => ({
+    const tableData = items
+      .sort((a, b) => {
+        const needDiff = b.required - b.count - (a.required - a.count);
+        if (needDiff !== 0) return needDiff;
+        return a.key.localeCompare(b.key);
+      })
+      .map((r) => ({
         Code: r.key,
         Needed: `${r.required - r.count}x`,
         Current: r.count,
         Required: `${r.required}x`,
-      }))
+      }));
 
-    console.table(tableData)
+    console.table(tableData);
 
-    console.log("") // spacing between groups
+    console.log(""); // spacing between groups
   }
 
   const totalPercent =
-    results.reduce((sum, r) => sum + r.percent, 0) / results.length
+    results.reduce((sum, r) => sum + r.percent, 0) / results.length;
 
-  console.log(`\nOverall progress: ${totalPercent.toFixed(1)}%`)
+  console.log(`\nOverall progress: ${totalPercent.toFixed(1)}%`);
 
-  console.log("\n=== SUMMARY ===")
-console.log(`Completed: ${completed}/${results.length}`)
-console.log(`Total remaining: ${totalNeeded}`)
+  console.log("\n=== SUMMARY ===");
+  console.log(`Completed: ${completed}/${results.length}`);
+  console.log(`Total remaining: ${totalNeeded}`);
 
-if (totalPercent < 30) {
-  console.log("You've got some work to do 😅")
-} else if (totalPercent < 70) {
-  console.log("Getting there 👀")
-} else {
-  console.log("Almost done 🔥")
-}
+  if (totalPercent < 30) {
+    console.log("You've got some work to do 😅");
+  } else if (totalPercent < 70) {
+    console.log("Getting there 👀");
+  } else {
+    console.log("Almost done 🔥");
+  }
 }
 
 function groupBy<T, K extends string>(
   arr: T[],
-  getKey: (item: T) => K
+  getKey: (item: T) => K,
 ): Record<K, T[]> {
-  return arr.reduce((acc, item) => {
-    const key = getKey(item)
-    if (!acc[key]) acc[key] = []
-    acc[key].push(item)
-    return acc
-  }, {} as Record<K, T[]>)
+  return arr.reduce(
+    (acc, item) => {
+      const key = getKey(item);
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(item);
+      return acc;
+    },
+    {} as Record<K, T[]>,
+  );
 }
 
 function colorize(percent: number, text: string) {
-  if (percent <= 33) return `\x1b[31m${text}\x1b[0m` // red
-  if (percent <= 66) return `\x1b[33m${text}\x1b[0m` // yellow
-  return `\x1b[32m${text}\x1b[0m` // green
+  if (percent <= 33) return `\x1b[31m${text}\x1b[0m`; // red
+  if (percent <= 66) return `\x1b[33m${text}\x1b[0m`; // yellow
+  return `\x1b[32m${text}\x1b[0m`; // green
 }
