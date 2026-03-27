@@ -92,7 +92,7 @@ async function fetchGitHubStats(query: string) {
     }),
   });
   const json = await res.json();
-  return normalizeRepos(json.data);
+  return json.data;
 }
 
 type Repo = {
@@ -332,4 +332,23 @@ export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
     if (percent <= 66) return `\x1b[33m${text}\x1b[0m`; // yellow
     return `\x1b[32m${text}\x1b[0m`; // green
   }
+}
+
+function getEmbedUrl(url: string) {
+  if (url.includes("youtube.com/watch")) {
+    const id = new URL(url).searchParams.get("v");
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  if (url.includes("youtu.be")) {
+    const id = url.split("/").pop();
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  if (url.includes("/shorts/")) {
+    const id = url.split("/").pop();
+    return `https://youtube.com/embed/${id}`;
+  }
+
+  return url;
 }

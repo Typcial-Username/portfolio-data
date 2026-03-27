@@ -2,14 +2,14 @@ id: belt_clip
 title: Modeling Belt Clip
 description: Designs a custom belt clip using McMaster part 91290A115.
 course: DBM100
-# files:
-  # cad: 
-  #   - belt_clip.f3d
-  # stl: 
-  #   - belt_clip.stl
+files:
+  cad:
+    - belt_clip.f3d
+  stl:
+    - belt_clip.stl
 media:
-  # images: 
-  #   - belt_clip.png
+  images:
+    - belt_clip.png
   modelViewer: https://a360.co/3XEdLau
 objectives:
   - code: DMF-1
