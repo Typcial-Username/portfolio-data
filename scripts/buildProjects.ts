@@ -11,10 +11,41 @@ const OUTPUT_FILE = "dist/projects.json";
 
 const projects: Project[] = [];
 const ids = new Set<string>();
+let repoMap = new Map<string, Repo>();
 
 type Objective = z.infer<typeof Objective>;
 
 const objCoverage = new Map<Objective, number>();
+
+type Repo = {
+  name: string;
+  description: string | null;
+  url: string;
+  homepageUrl: string | null;
+  pushedAt: string;
+  stargazerCount: number;
+  repositoryTopics: { nodes: { topic: { name: string } }[] };
+  languages: Languages;
+};
+
+interface Languages {
+  totalSize: number;
+  edges: {
+    size: number;
+    node: {
+      name: string;
+      color: string;
+    };
+  }[];
+}
+
+type CoverageResult<T extends string> = {
+  key: T;
+  count: number;
+  required: number;
+  percent: number;
+  complete: boolean;
+};
 
 // Find all files in the projects directory
 const allFiles = readdirSync(PROJECT_DIR, {
@@ -61,93 +92,66 @@ for (const file of allFiles) {
   }
 
   if (validated.repo) ids.add(validated.repo);
-  projects.push(validated);
+
+  projects.push(normalizeVideos(validated));
 }
 
 for (const group of chunk<string>(toArr<string>(ids), 20)) {
   const query = buildRepoQuery(group);
   const res = await fetchGitHubStats(query);
 
-  console.dir(res, { colors: true, depth: null });
+  repoMap = createRepoMap(res);
 }
 
 mkdirSync(DIST_DIR, { recursive: true });
 
-writeFileSync(OUTPUT_FILE, JSON.stringify({ projects }, null, 2));
+writeFileSync(
+  OUTPUT_FILE,
+  JSON.stringify(
+    { projects: mergeProjectsWithRepos(projects, repoMap) },
+    null,
+    2,
+  ),
+);
 
 const coverage = getCoverage(objCoverage, Objective.options, 2);
 printCoverage(coverage);
 
 console.log(`✅ Built ${projects.length} projects → ${OUTPUT_FILE}`);
 
-async function fetchGitHubStats(query: string) {
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
-  const json = await res.json();
-  return json.data;
+function getEmbedUrl(url: string) {
+  if (url.includes("youtube.com/watch")) {
+    const id = new URL(url).searchParams.get("v");
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  if (url.includes("youtu.be")) {
+    const id = url.split("/").pop();
+    return `https://www.youtube.com/embed/${id}`;
+  }
+
+  if (url.includes("/shorts/")) {
+    const id = url.split("/").pop();
+    return `https://youtube.com/embed/${id}`;
+  }
+
+  return url;
 }
 
-type Repo = {
-  name: string;
-  description: string | null;
-  url: string;
-  homepageUrl: string | null;
-  pushedAt: string;
-  stargazerCount: number;
-  repositoryTopics: { nodes: { topic: { name: string } }[] };
-  languages: {
-    totalSize: number;
-    edges: {
-      size: number;
-      node: { name: string; color: string };
-    }[];
-  };
-};
-
-function normalizeRepos(data: Record<string, Repo>): Repo[] {
-  return Object.values(data);
-}
-
-function createRepoMap(repos: Repo[]) {
-  return new Map(repos.map((repo) => [repo.name.toLowerCase(), repo]));
-}
-
-function mergeProjectsWithRepos(
-  projects: Project[],
-  repoMap: Map<string, Repo>,
-) {
-  return projects.map((project) => {
-    const repoName = project.repo?.toLowerCase();
-
-    const repo = repoName ? repoMap.get(repoName) : undefined;
-
+function normalizeVideos(project: Project) {
+  if (project.media?.videos) {
     return {
       ...project,
-      repo: repo
-        ? {
-            github: {
-              url: repo.url,
-              homepageUrl: repo.homepageUrl,
-              pushedAt: repo.pushedAt,
-              stars: repo.stargazerCount,
-              topics: repo.repositoryTopics,
-              languages: repo.languages.edges,
-              lastUpdated: repo.pushedAt,
-            },
-          }
-        : null,
+      media: {
+        videos: project.media.videos.map((vid) => getEmbedUrl(vid)),
+      },
     };
-  });
+  }
+
+  return project;
 }
 
+//#region GitHub Repo Details
 function buildRepoQuery(repos: string[]) {
   let query = "query {";
 
@@ -162,6 +166,7 @@ function buildRepoQuery(repos: string[]) {
         homepageUrl
         pushedAt
         stargazerCount
+        isFork
 
         repositoryTopics(first: 10) {
           nodes { topic { name } }
@@ -181,43 +186,83 @@ function buildRepoQuery(repos: string[]) {
   return query + "\n}";
 }
 
-function normalizeLanguages(languages: Record<string, number>) {
-  const total = Object.values(languages).reduce((a, b) => a + b, 0);
+async function fetchGitHubStats(query: string) {
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  });
+  const json = await res.json();
+  const normalized = normalizeRepos(json.data);
 
+  return normalized;
+}
+
+function normalizeRepos(data: Record<string, Repo>): Repo[] {
+  return Object.values(data);
+}
+
+function normalizeLanguages(languages: Languages) {
+  const total = languages.totalSize;
+
+  const langs: Record<string, { color: string; percent: number }> = {};
   const percentages: Record<string, number> = {};
 
-  for (const [lang, bytes] of Object.entries(languages)) {
-    percentages[lang] = Math.round((bytes / total) * 100);
+  for (const [_, lang] of Object.entries(languages.edges)) {
+    percentages[lang.node.name] = Math.round((lang.size / total) * 100);
   }
 
-  return percentages;
+  languages.edges.map((lang) => {
+    return {
+      name: lang.node.name,
+      color: lang.node.color,
+      percent: percentages[lang.node.name],
+    };
+  });
+
+  return {
+    totalSize: total,
+    items: [langs],
+  };
 }
 
-function chunk<T>(arr: T[], size: number) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) {
-    out.push(arr.slice(i, i + size));
-  }
-  return out;
+function createRepoMap(repos: Repo[]) {
+  return new Map(repos.map((repo) => [repo.name.toLowerCase(), repo]));
 }
 
-function toArr<T>(set: Set<T>) {
-  let arr = [];
-  for (const item of set.keys()) {
-    arr.push(item);
-  }
+function mergeProjectsWithRepos(
+  projects: Project[],
+  repoMap: Map<string, Repo>,
+) {
+  return projects.map((project) => {
+    const repoName = project.repo?.toLowerCase().split("/").pop();
 
-  return arr;
+    const repo = repoName ? repoMap.get(repoName) : undefined;
+
+    return {
+      ...project,
+      github: repo
+        ? {
+            url: repo.url,
+            homepageUrl: repo.homepageUrl,
+            pushedAt: repo.pushedAt,
+            stars: repo.stargazerCount,
+            topics: repo.repositoryTopics,
+            languages: normalizeLanguages(repo.languages),
+            lastUpdated: repo.pushedAt,
+          }
+        : null,
+    };
+  });
 }
+//#endregion
 
-type CoverageResult<T extends string> = {
-  key: T;
-  count: number;
-  required: number;
-  percent: number;
-  complete: boolean;
-};
-
+//#region Coverage
 export function getCoverage<const T extends readonly string[]>(
   map: Map<T[number], number>,
   allKeys: T,
@@ -333,22 +378,23 @@ export function printCoverage<T extends string>(results: CoverageResult<T>[]) {
     return `\x1b[32m${text}\x1b[0m`; // green
   }
 }
+//#endregion
 
-function getEmbedUrl(url: string) {
-  if (url.includes("youtube.com/watch")) {
-    const id = new URL(url).searchParams.get("v");
-    return `https://www.youtube.com/embed/${id}`;
+//#region Utils
+function chunk<T>(arr: T[], size: number) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
   }
-
-  if (url.includes("youtu.be")) {
-    const id = url.split("/").pop();
-    return `https://www.youtube.com/embed/${id}`;
-  }
-
-  if (url.includes("/shorts/")) {
-    const id = url.split("/").pop();
-    return `https://youtube.com/embed/${id}`;
-  }
-
-  return url;
+  return out;
 }
+
+function toArr<T>(set: Set<T>) {
+  let arr = [];
+  for (const item of set.keys()) {
+    arr.push(item);
+  }
+
+  return arr;
+}
+//#endregion
