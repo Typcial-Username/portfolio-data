@@ -128,14 +128,14 @@
           "totalSize": 6221,
           "items": [
             {
-              "C": {
-                "color": "#555555",
-                "percent": 32
-              },
-              "Makefile": {
-                "color": "#427819",
-                "percent": 68
-              }
+              "name": "C",
+              "color": "#555555",
+              "percent": 32
+            },
+            {
+              "name": "Makefile",
+              "color": "#427819",
+              "percent": 68
             }
           ]
         },

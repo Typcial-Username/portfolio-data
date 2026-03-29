@@ -98,7 +98,10 @@ for (const file of allFiles) {
 
 for (const group of chunk<string>(toArr<string>(ids), 20)) {
   const query = buildRepoQuery(group);
+  console.log(query);
   const res = await fetchGitHubStats(query);
+
+  console.dir(res, { colors: true, depth: null });
 
   repoMap = createRepoMap(res);
 }
@@ -207,10 +210,19 @@ function normalizeRepos(data: Record<string, Repo>): Repo[] {
   return Object.values(data);
 }
 
-function normalizeLanguages(languages: Languages) {
+type NormalizedLanguage = {
+  name: string;
+  color: string;
+  percent: number;
+};
+
+function normalizeLanguages(languages: Languages): {
+  totalSize: number;
+  items: NormalizedLanguage[];
+} {
   const total = languages.totalSize;
 
-  const langs: Record<string, { color: string; percent: number }> = {};
+  const langs: Set<NormalizedLanguage> = new Set();
   const percentages: Record<string, number> = {};
 
   for (const [_, lang] of Object.entries(languages.edges)) {
@@ -218,16 +230,16 @@ function normalizeLanguages(languages: Languages) {
   }
 
   languages.edges.map((lang) => {
-    return {
+    langs.add({
       name: lang.node.name,
       color: lang.node.color,
       percent: percentages[lang.node.name],
-    };
+    });
   });
 
   return {
     totalSize: total,
-    items: [langs],
+    items: toArr(langs),
   };
 }
 
