@@ -121,9 +121,7 @@
         "homepageUrl": null,
         "pushedAt": "2026-03-25T21:40:12Z",
         "stars": 0,
-        "topics": {
-          "nodes": []
-        },
+        "topics": [],
         "languages": {
           "totalSize": 6221,
           "items": [

@@ -39,6 +39,14 @@ interface Languages {
   }[];
 }
 
+interface Topics {
+  nodes: {
+    topic: {
+      name: string;
+    };
+  }[];
+}
+
 type CoverageResult<T extends string> = {
   key: T;
   count: number;
@@ -98,7 +106,6 @@ for (const file of allFiles) {
 
 for (const group of chunk<string>(toArr<string>(ids), 20)) {
   const query = buildRepoQuery(group);
-  console.log(query);
   const res = await fetchGitHubStats(query);
 
   console.dir(res, { colors: true, depth: null });
@@ -243,6 +250,10 @@ function normalizeLanguages(languages: Languages): {
   };
 }
 
+function normalizeTopics(topics: Topics) {
+  return topics.nodes.map((node) => node.topic.name);
+}
+
 function createRepoMap(repos: Repo[]) {
   return new Map(repos.map((repo) => [repo.name.toLowerCase(), repo]));
 }
@@ -264,7 +275,7 @@ function mergeProjectsWithRepos(
             homepageUrl: repo.homepageUrl,
             pushedAt: repo.pushedAt,
             stars: repo.stargazerCount,
-            topics: repo.repositoryTopics,
+            topics: normalizeTopics(repo.repositoryTopics),
             languages: normalizeLanguages(repo.languages),
             lastUpdated: repo.pushedAt,
           }
