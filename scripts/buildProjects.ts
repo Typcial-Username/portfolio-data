@@ -108,8 +108,6 @@ for (const group of chunk<string>(toArr<string>(ids), 20)) {
   const query = buildRepoQuery(group);
   const res = await fetchGitHubStats(query);
 
-  console.dir(res, { colors: true, depth: null });
-
   repoMap = createRepoMap(res);
 }
 

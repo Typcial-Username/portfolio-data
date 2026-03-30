@@ -98,6 +98,54 @@
       "github": null
     },
     {
+      "id": "core2_quotes",
+      "title": "Core2 Quotes",
+      "description": "Displays quotes on the M5Stack Core2.",
+      "course": "CSC230",
+      "media": {
+        "videos": [
+          "https://youtube.com/embed/HfrW362TI20"
+        ]
+      },
+      "objectives": [
+        {
+          "code": "RES-4",
+          "reason": "Showcases random quotes from the Quotable API and can automatically get new quotes on an interval."
+        }
+      ],
+      "repo": "Typcial-Username/CSC230-IoT",
+      "status": "complete",
+      "visibility": "public",
+      "github": {
+        "url": "https://github.com/Typcial-Username/CSC230-IoT",
+        "homepageUrl": "",
+        "pushedAt": "2026-03-09T18:28:12Z",
+        "stars": 0,
+        "topics": [
+          "class",
+          "programming",
+          "robotics",
+          "res-1"
+        ],
+        "languages": {
+          "totalSize": 66612,
+          "items": [
+            {
+              "name": "C++",
+              "color": "#f34b7d",
+              "percent": 92
+            },
+            {
+              "name": "HTML",
+              "color": "#e34c26",
+              "percent": 8
+            }
+          ]
+        },
+        "lastUpdated": "2026-03-09T18:28:12Z"
+      }
+    },
+    {
       "id": "motor_speed_controller",
       "title": "Motor Speed Controller",
       "description": "Create a circuit that uses PWM to control a DC motor via a motor controller.",
@@ -119,25 +167,25 @@
       "github": {
         "url": "https://github.com/Typcial-Username/rbt211",
         "homepageUrl": null,
-        "pushedAt": "2026-03-25T21:40:12Z",
+        "pushedAt": "2026-03-30T05:15:47Z",
         "stars": 0,
         "topics": [],
         "languages": {
-          "totalSize": 6221,
+          "totalSize": 15085,
           "items": [
             {
               "name": "C",
               "color": "#555555",
-              "percent": 32
+              "percent": 28
             },
             {
               "name": "Makefile",
               "color": "#427819",
-              "percent": 68
+              "percent": 72
             }
           ]
         },
-        "lastUpdated": "2026-03-25T21:40:12Z"
+        "lastUpdated": "2026-03-30T05:15:47Z"
       }
     },
     {
@@ -164,6 +212,53 @@
       "status": "complete",
       "visibility": "public",
       "github": null
+    },
+    {
+      "id": "reaction_game",
+      "title": "Reaction Game",
+      "description": "Creates a precision reaction game where the goal is to press a button at a specific time when a specific LED is lit up.",
+      "course": "RBT211",
+      "repo": "Typcial-Username/rbt211",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/embed/7ajM6mpHS4o"
+        ]
+      },
+      "objectives": [
+        {
+          "code": "RES-1",
+          "reason": "Creates a fun game for everyone and is relatively simple to implement."
+        },
+        {
+          "code": "RES-2",
+          "reason": "Uses timers, interrupts, and PWM to control when a specifcic LED turns on. Programmed in Microchip Studio."
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": {
+        "url": "https://github.com/Typcial-Username/rbt211",
+        "homepageUrl": null,
+        "pushedAt": "2026-03-30T05:15:47Z",
+        "stars": 0,
+        "topics": [],
+        "languages": {
+          "totalSize": 15085,
+          "items": [
+            {
+              "name": "C",
+              "color": "#555555",
+              "percent": 28
+            },
+            {
+              "name": "Makefile",
+              "color": "#427819",
+              "percent": 72
+            }
+          ]
+        },
+        "lastUpdated": "2026-03-30T05:15:47Z"
+      }
     }
   ]
 }

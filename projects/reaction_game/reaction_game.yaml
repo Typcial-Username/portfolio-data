@@ -1,0 +1,17 @@
+id: reaction_game
+title: Reaction Game
+description: Creates a precision reaction game where the goal is to press a button at a specific time when a specific LED is lit up.
+course: RBT211
+repo: Typcial-Username/rbt211
+media:
+  docs:
+    - reaction_game_final.pdf
+  videos:
+    - https://youtu.be/7ajM6mpHS4o
+objectives:
+  - code: RES-1
+    reason: Creates a fun game for everyone and is relatively simple to implement.
+  - code: RES-2
+    reason: Uses timers, interrupts, and PWM to control when a specifcic LED turns on. Programmed in Microchip Studio.
+status: complete
+visibility: public
