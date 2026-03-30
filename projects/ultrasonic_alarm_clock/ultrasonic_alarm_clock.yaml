@@ -1,0 +1,16 @@
+id: ultrasonic_alarm_clock
+title: Ultrasonic Alarm Clock
+description: Template description
+course: SIP405
+objectives:
+  - code: DMF-1
+    reason: Uses ultrasonic transducers to produce a directional sound laser alarm to wake specific people in a room.
+  - code: DMF-5
+    reason: Uses a ESP32 microcontroller and ultrasonic transducers to produce directional sound.
+  - code: RES-1
+    reason: Helps wake people up from sleep in an innovative way.
+  - code: RES-3
+    reason: Uses servos to precisely aim at a target.
+repo: Typcial-Username/SIP
+status: in-progress
+visibility: public

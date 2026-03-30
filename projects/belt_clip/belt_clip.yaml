@@ -12,10 +12,7 @@ media:
     - belt_clip.png
   modelViewer: https://a360.co/3XEdLau
 objectives:
-  - code: DMF-1
-    reason: asdf
   - code: DMF-3
-    reason: asdf
-# repo: Typcial-Username/abc
+    reason: Designed to clip onto a belt.
 status: complete
 visibility: public

@@ -1,0 +1,15 @@
+id: horn_control_board
+title: Horn Contron Board
+description: Allows the user to create and use custom horn sounds on their vehicle.
+course: BUS200
+media:
+  docs:
+    - BUS200_Business_Plan.pdf
+  modelViewer: https://www.tinkercad.com/things/jqb4Gj4hLUl-horn-control-board?sharecode=JRmlAXKgU-VE7nYFVy-13k5lixM4_kgrI-JtGrqczg0
+objectives:
+  - code: DMF-1
+    reason: Designed to work in vehicles and would be offered as a product.
+  - code: DMF-5
+    reason: Uses a soundboard module, amplifier, and speaker to produce audible sound.
+status: complete
+visibility: public

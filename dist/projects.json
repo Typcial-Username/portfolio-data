@@ -40,12 +40,8 @@
       },
       "objectives": [
         {
-          "code": "DMF-1",
-          "reason": "asdf"
-        },
-        {
           "code": "DMF-3",
-          "reason": "asdf"
+          "reason": "Designed to clip onto a belt."
         }
       ],
       "status": "complete",
@@ -70,27 +66,6 @@
         {
           "code": "DMF-4",
           "reason": "Techniques such as scoring to bend, strategic use of hot-glue, and utilizing support structures to allow for specific routes were all used."
-        }
-      ],
-      "status": "complete",
-      "visibility": "public",
-      "github": null
-    },
-    {
-      "id": "coffee_mug",
-      "title": "Design a coffee mug",
-      "description": "Template description",
-      "course": "DBM100",
-      "media": {
-        "docs": [
-          "Coffee_Cup_Drawing.pdf"
-        ],
-        "modelViewer": "https://a360.co/"
-      },
-      "objectives": [
-        {
-          "code": "DMF-3",
-          "reason": "a"
         }
       ],
       "status": "complete",
@@ -144,6 +119,31 @@
         },
         "lastUpdated": "2026-03-09T18:28:12Z"
       }
+    },
+    {
+      "id": "horn_control_board",
+      "title": "Horn Contron Board",
+      "description": "Allows the user to create and use custom horn sounds on their vehicle.",
+      "course": "BUS200",
+      "media": {
+        "docs": [
+          "BUS200_Business_Plan.pdf"
+        ],
+        "modelViewer": "https://www.tinkercad.com/things/jqb4Gj4hLUl-horn-control-board?sharecode=JRmlAXKgU-VE7nYFVy-13k5lixM4_kgrI-JtGrqczg0"
+      },
+      "objectives": [
+        {
+          "code": "DMF-1",
+          "reason": "Designed to work in vehicles and would be offered as a product."
+        },
+        {
+          "code": "DMF-5",
+          "reason": "Uses a soundboard module, amplifier, and speaker to produce audible sound."
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": null
     },
     {
       "id": "motor_speed_controller",
@@ -258,6 +258,56 @@
           ]
         },
         "lastUpdated": "2026-03-30T05:15:47Z"
+      }
+    },
+    {
+      "id": "ultrasonic_alarm_clock",
+      "title": "Ultrasonic Alarm Clock",
+      "description": "Template description",
+      "course": "SIP405",
+      "objectives": [
+        {
+          "code": "DMF-1",
+          "reason": "Uses ultrasonic transducers to produce a directional sound laser alarm to wake specific people in a room."
+        },
+        {
+          "code": "DMF-5",
+          "reason": "Uses a ESP32 microcontroller and ultrasonic transducers to produce directional sound."
+        },
+        {
+          "code": "RES-1",
+          "reason": "Helps wake people up from sleep in an innovative way."
+        },
+        {
+          "code": "RES-3",
+          "reason": "Uses servos to precisely aim at a target."
+        }
+      ],
+      "repo": "Typcial-Username/SIP",
+      "status": "in-progress",
+      "visibility": "public",
+      "github": {
+        "url": "https://github.com/Typcial-Username/SIP",
+        "homepageUrl": null,
+        "pushedAt": "2026-03-20T07:07:23Z",
+        "stars": 0,
+        "topics": [],
+        "languages": {
+          "totalSize": 56567,
+          "items": [
+            {
+              "name": "C",
+              "color": "#555555",
+              "percent": 88
+            },
+            {
+              "name": "C++",
+              "color": "#f34b7d",
+              "percent": 12
+            }
+          ]
+        },
+        "lastUpdated": "2026-03-20T07:07:23Z"
       }
     }
   ]
