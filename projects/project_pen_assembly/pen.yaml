@@ -8,9 +8,11 @@ files:
 media:
   videos:
     - https://youtu.be/WOPf5bOiLoE
+  images:
+    - pen_bg.jpg
   modelViewer: https://a360.co/3Z8JcMa
 objectives:
-  - code: DMF-3
+  - code: DMF-6
     reason: Re-creates a pen.
 status: complete
 visibility: public

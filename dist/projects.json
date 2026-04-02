@@ -40,7 +40,7 @@
       },
       "objectives": [
         {
-          "code": "DMF-3",
+          "code": "DMF-6",
           "reason": "Designed to clip onto a belt."
         }
       ],
@@ -56,15 +56,20 @@
       "media": {
         "videos": [
           "https://youtube.com/embed/_YLQQtTR3QI"
+        ],
+        "images": [
+          "empty.jpg",
+          "mid.jpg",
+          "end.jpg"
         ]
       },
       "objectives": [
         {
-          "code": "DMF-2",
+          "code": "DMF-1",
           "reason": "This project was developed in cardboard using CAD (Cardboard-Aided Design). I learned techniques to manipulate and work with cardboard to complete projects."
         },
         {
-          "code": "DMF-4",
+          "code": "DMF-5",
           "reason": "Techniques such as scoring to bend, strategic use of hot-glue, and utilizing support structures to allow for specific routes were all used."
         }
       ],
@@ -80,6 +85,9 @@
       "media": {
         "videos": [
           "https://youtube.com/embed/HfrW362TI20"
+        ],
+        "docs": [
+          "core2_quotes.pdf"
         ]
       },
       "objectives": [
@@ -121,8 +129,32 @@
       }
     },
     {
+      "id": "digital_derby",
+      "title": "Digital Derby",
+      "description": "Template description",
+      "course": "TMP000",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/embed/7UnNRdInfSM"
+        ],
+        "images": [
+          "decals.jpg",
+          "road.jpg"
+        ]
+      },
+      "objectives": [
+        {
+          "code": "DMF-4",
+          "reason": "Models a pinewood derby car."
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": null
+    },
+    {
       "id": "horn_control_board",
-      "title": "Horn Contron Board",
+      "title": "Horn Control Board",
       "description": "Allows the user to create and use custom horn sounds on their vehicle.",
       "course": "BUS200",
       "media": {
@@ -133,7 +165,7 @@
       },
       "objectives": [
         {
-          "code": "DMF-1",
+          "code": "DMF-2",
           "reason": "Designed to work in vehicles and would be offered as a product."
         },
         {
@@ -153,6 +185,9 @@
       "media": {
         "videos": [
           "https://youtube.com/embed/LI2515mfMRE"
+        ],
+        "docs": [
+          "motor_speed_controller.pdf"
         ]
       },
       "objectives": [
@@ -189,6 +224,32 @@
       }
     },
     {
+      "id": "motor_step_down",
+      "title": "Motor Step Down",
+      "description": "Converts the output speed of a TT Motor to the average walking speed of a 20-29 year old human.",
+      "course": "RBT205",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/embed/OW4VX4612bI"
+        ],
+        "docs": [
+          "Motor_Gear_Reduction.pdf"
+        ],
+        "images": [
+          "top.png"
+        ]
+      },
+      "objectives": [
+        {
+          "code": "RES-1",
+          "reason": "Demonstrates gear ratios"
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": null
+    },
+    {
       "id": "project_pen_assembly",
       "title": "Project Pen Assembly",
       "description": "Create a pen with multiple components and form an assembly",
@@ -201,11 +262,14 @@
       "media": {
         "videos": [
           "https://www.youtube.com/embed/WOPf5bOiLoE"
+        ],
+        "images": [
+          "pen_bg.jpg"
         ]
       },
       "objectives": [
         {
-          "code": "DMF-3",
+          "code": "DMF-6",
           "reason": "Re-creates a pen."
         }
       ],
@@ -222,16 +286,19 @@
       "media": {
         "videos": [
           "https://www.youtube.com/embed/7ajM6mpHS4o"
+        ],
+        "docs": [
+          "reaction_game_final.pdf"
         ]
       },
       "objectives": [
         {
           "code": "RES-1",
-          "reason": "Creates a fun game for everyone and is relatively simple to implement."
+          "reason": "Designs and implements a real-time embedded system that requires precise timing, input detection, and output control. The system challenges users to respond to time-sensitive visual cues, demonstrating accurate synchronization between hardware timers, PWM-controlled outputs, and user inputs. This mirrors real-world robotics scenarios where deterministic timing and low-latency response are critical for coordinating sensors and actuators, such as in control systems, safety mechanisms, and human-machine interaction."
         },
         {
           "code": "RES-2",
-          "reason": "Uses timers, interrupts, and PWM to control when a specifcic LED turns on. Programmed in Microchip Studio."
+          "reason": "Implements a microcontroller-based system using low-level programming techniques, including hardware timers, PWM signal generation, and precise event timing. The project demonstrates control over microprocessor resources by managing time-critical operations, handling user input, and synchronizing outputs without relying on high-level abstractions. Development in Microchip Studio highlights direct interaction with embedded hardware, reinforcing concepts such as register-level control, timing accuracy, and efficient program structure."
         }
       ],
       "status": "complete",
@@ -263,20 +330,12 @@
     {
       "id": "ultrasonic_alarm_clock",
       "title": "Ultrasonic Alarm Clock",
-      "description": "Template description",
+      "description": "An alarm clock using ultrasonic transducers to produce directional sound to specifically wake specific people instead of the entire room.",
       "course": "SIP405",
       "objectives": [
         {
-          "code": "DMF-1",
-          "reason": "Uses ultrasonic transducers to produce a directional sound laser alarm to wake specific people in a room."
-        },
-        {
-          "code": "DMF-5",
+          "code": "DMF-2",
           "reason": "Uses a ESP32 microcontroller and ultrasonic transducers to produce directional sound."
-        },
-        {
-          "code": "RES-1",
-          "reason": "Helps wake people up from sleep in an innovative way."
         },
         {
           "code": "RES-3",
@@ -309,6 +368,26 @@
         },
         "lastUpdated": "2026-03-20T07:07:23Z"
       }
+    },
+    {
+      "id": "vex",
+      "title": "Vex",
+      "description": "Designed a robot to compete in the Vex robotics competition.",
+      "course": "PDS300",
+      "media": {
+        "videos": [],
+        "docs": [],
+        "images": []
+      },
+      "objectives": [
+        {
+          "code": "DMF-3",
+          "reason": "Worked in a team to design and build a robot"
+        }
+      ],
+      "status": "in-progress",
+      "visibility": "public",
+      "github": null
     }
   ]
 }

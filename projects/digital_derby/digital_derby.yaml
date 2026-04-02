@@ -1,0 +1,16 @@
+id: digital_derby
+title: Digital Derby
+description: Template description
+course: TMP000
+media:
+  images:
+    - decals.jpg
+    - road.jpg
+  videos:
+    - https://youtu.be/7UnNRdInfSM
+  modelViewer: https://a360.co/4dZbFvv
+objectives:
+  - code: DMF-4
+    reason: Models a pinewood derby car.
+status: complete
+visibility: public

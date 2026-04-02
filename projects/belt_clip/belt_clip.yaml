@@ -12,7 +12,7 @@ media:
     - belt_clip.png
   modelViewer: https://a360.co/3XEdLau
 objectives:
-  - code: DMF-3
+  - code: DMF-6
     reason: Designed to clip onto a belt.
 status: complete
 visibility: public

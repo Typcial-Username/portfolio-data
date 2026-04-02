@@ -10,8 +10,8 @@ media:
     - https://youtu.be/7ajM6mpHS4o
 objectives:
   - code: RES-1
-    reason: Creates a fun game for everyone and is relatively simple to implement.
+    reason: Designs and implements a real-time embedded system that requires precise timing, input detection, and output control. The system challenges users to respond to time-sensitive visual cues, demonstrating accurate synchronization between hardware timers, PWM-controlled outputs, and user inputs. This mirrors real-world robotics scenarios where deterministic timing and low-latency response are critical for coordinating sensors and actuators, such as in control systems, safety mechanisms, and human-machine interaction.
   - code: RES-2
-    reason: Uses timers, interrupts, and PWM to control when a specifcic LED turns on. Programmed in Microchip Studio.
+    reason: Implements a microcontroller-based system using low-level programming techniques, including hardware timers, PWM signal generation, and precise event timing. The project demonstrates control over microprocessor resources by managing time-critical operations, handling user input, and synchronizing outputs without relying on high-level abstractions. Development in Microchip Studio highlights direct interaction with embedded hardware, reinforcing concepts such as register-level control, timing accuracy, and efficient program structure.
 status: complete
 visibility: public

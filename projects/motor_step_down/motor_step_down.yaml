@@ -1,0 +1,17 @@
+id: motor_step_down
+title: Motor Step Down
+description: Converts the output speed of a TT Motor to the average walking speed of a 20-29 year old human.
+course: RBT205
+media:
+  docs:
+    - Motor_Gear_Reduction.pdf
+  images:
+    - top.png
+  videos:
+    - https://www.youtube.com/watch?v=OW4VX4612bI
+  modelViewer: https://a360.co/4sYfeqo
+objectives:
+  - code: RES-1
+    reason: Demonstrates gear ratios
+status: complete
+visibility: public

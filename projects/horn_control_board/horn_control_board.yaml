@@ -7,7 +7,7 @@ media:
     - BUS200_Business_Plan.pdf
   modelViewer: https://www.tinkercad.com/things/jqb4Gj4hLUl-horn-control-board?sharecode=JRmlAXKgU-VE7nYFVy-13k5lixM4_kgrI-JtGrqczg0
 objectives:
-  - code: DMF-1
+  - code: DMF-2
     reason: Designed to work in vehicles and would be offered as a product.
   - code: DMF-5
     reason: Uses a soundboard module, amplifier, and speaker to produce audible sound.

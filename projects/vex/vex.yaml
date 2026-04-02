@@ -1,0 +1,13 @@
+id: vex
+title: Vex
+description: Designed a robot to compete in the Vex robotics competition.
+course: PDS300
+media:
+  docs: []
+  images: []
+  videos: []
+objectives:
+  - code: DMF-3
+    reason: Worked in a team to design and build a robot
+status: in-progress
+visibility: public

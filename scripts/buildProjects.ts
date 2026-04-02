@@ -152,6 +152,8 @@ function normalizeVideos(project: Project) {
       ...project,
       media: {
         videos: project.media.videos.map((vid) => getEmbedUrl(vid)),
+        docs: project.media.docs,
+        images: project.media.images,
       },
     };
   }
