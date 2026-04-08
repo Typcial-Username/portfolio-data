@@ -12,6 +12,6 @@ media:
   modelViewer: https://a360.co/4sYfeqo
 objectives:
   - code: RES-1
-    reason: Demonstrates gear ratios
+    reason: Models and analyzes the relationship between motor output and real-world motion by converting a target human walking speed into mechanical requirements within a simulated system. The project involves unit conversions from miles per hour to centimeters per minute, calculation of wheel circumference, and determination of required rotational speed in revolutions per minute. These values are then used to derive an appropriate gear ratio, which is implemented and visualized using joint motion within Fusion 360. This demonstrates how theoretical calculations can be applied to mechanical system design, reflecting how robotic systems translate real-world performance requirements into actuator specifications.
 status: complete
 visibility: public
