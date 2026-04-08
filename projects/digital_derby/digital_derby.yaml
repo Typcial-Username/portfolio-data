@@ -11,6 +11,6 @@ media:
   modelViewer: https://a360.co/4dZbFvv
 objectives:
   - code: DMF-4
-    reason: Models a pinewood derby car.
+    reason: Evaluates material and fabrication considerations by designing and producing a pinewood derby car optimized for 3D printing. The project accounts for additive manufacturing constraints such as layer orientation, structural strength, and tolerance for axle and wheel interfaces. Design decisions balance performance goals, such as weight distribution and stability, with the limitations and advantages of the chosen material and printing process. This demonstrates the ability to align material properties and manufacturing techniques with functional design requirements in a complete prototyping workflow.
 status: complete
 visibility: public
