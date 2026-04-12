@@ -86,7 +86,7 @@ for (const file of allFiles) {
 
   const validated = await validateProject(parsed);
 
-  if (!validated) throw new Error("Project Error");
+  if (!validated) throw new Error(`Project ${parsed.id} not validated`);
 
   if (ids.has(validated.id)) {
     console.error(`❌ Duplicate project id: "${validated.id}"`);

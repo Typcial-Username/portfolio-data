@@ -10,15 +10,15 @@ export function validateAllProjects() {
   const allFiles = readdirSync("projects", {
     recursive: true,
     withFileTypes: true,
-  }).filter((f) => !f.name.startsWith("_"));
+  }).filter(
+    (f) =>
+      !f.name.startsWith("_") &&
+      [".json", ".yaml", ".yml"].includes(path.extname(f.name)),
+  );
+
+  console.log(`Validating ${allFiles.length} projects...`);
 
   for (const file of allFiles) {
-    if (
-      !file.isFile() ||
-      ![".json", ".yaml", ".yml"].includes(path.extname(file.name))
-    )
-      continue;
-
     const fullPath = path.join(file.parentPath, file.name);
     const raw = readFileSync(fullPath, "utf8");
 
@@ -34,6 +34,8 @@ export function validateAllProjects() {
       console.error(`❌ Failed to parse ${fullPath}`);
       throw err;
     }
+
+    validateProject(parsed);
   }
 
   console.log("Projects schema valid ✔");
@@ -149,6 +151,7 @@ function findFile(fileName: string, startingPath: string) {
   return null;
 }
 
-if (import.meta.main) {
-  validateAllProjects();
-}
+// if (import.meta.main) {
+// console.log("Good");
+validateAllProjects();
+// }
