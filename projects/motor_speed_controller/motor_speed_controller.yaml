@@ -9,9 +9,9 @@ media:
     - https://www.youtube.com/shorts/LI2515mfMRE
 objectives:
   - code: RES-2
-    reason: Uses timers, PWM, and interupts to control a DC motor on a Arduino Uno.
+    reason: Implements microcontroller-based control of a DC motor using hardware timers, PWM signal generation, and interrupt-driven logic. The system demonstrates precise regulation of motor speed by adjusting duty cycles, allowing for smooth and consistent actuator behavior. Efficient use of embedded resources enables accurate timing control while avoiding blocking delays, supporting real-time responsiveness. Development within Microchip Studio reinforces low-level interaction with hardware and highlights an understanding of microprocessor-driven control systems.
   - code: RES-6
-    reason: Goes through a pre-defined sequence of motor speeds
+    reason: Executes an autonomous control sequence that modulates motor speed over time without requiring direct user input. The system progresses through a predefined set of states, using timing conditions to control transitions between different motor speeds. This structured sequencing demonstrates how embedded systems can perform repeatable tasks independently once initialized. The approach reflects foundational concepts in robotics, where simple autonomous routines are used to control actuators in predictable and reliable ways.
 repo: Typcial-Username/rbt211
 status: complete
 visibility: public
