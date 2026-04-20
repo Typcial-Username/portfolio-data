@@ -1,12 +1,14 @@
 id: 4bit_adder
 title: 4-bit Adder
-description: Template description
+description: Builds a 4 bit binary adder using Logisim.
 course: RBT131
 media:
-  docs: []
+  docs:
+    - 4_Bit_Binary_Adder.pdf
+    - 4Bit_Adder_Truth_Table.pdf
   images: []
 objectives:
   - code: RES-5
-    reason: logic
+    reason: Applies hardware description techniques to implement a scalable 4-bit adder on an FPGA, demonstrating how simple arithmetic units can be expanded into larger systems through modular design. The project showcases the transition from low-level logic to hardware abstraction using Verilog, including the composition of multi-bit structures and management of carry propagation. This reflects real-world digital system design practices used in processors and embedded systems, where hardware is defined, simulated, and deployed using HDL-based workflows.
 status: in-progress
 visibility: public
