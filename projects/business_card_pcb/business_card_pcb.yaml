@@ -1,0 +1,15 @@
+id: business_card_pcb
+title: Business Card PCB
+description: Designs a custom PCB to be used as a business card.
+course: RBT353
+media:
+  docs:
+    - business_card_pcb.pdf
+  images: []
+  videos:
+    - https://youtu.be/rguVzqBqxHY
+objectives:
+  - code: RES-3
+    reason: Designs a custom PCB.
+status: complete
+visibility: public

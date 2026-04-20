@@ -4,7 +4,11 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/node": "^25.6.0",
+=======
+    "@types/node": "^25.5.2",
+>>>>>>> cd48355eb6906f3031c92eef793d4574f3d23608
     "husky": "^9.1.7",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",

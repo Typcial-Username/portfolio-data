@@ -68,6 +68,30 @@
       "github": null
     },
     {
+      "id": "business_card_pcb",
+      "title": "Business Card PCB",
+      "description": "Designs a custom PCB to be used as a business card.",
+      "course": "RBT353",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/embed/rguVzqBqxHY"
+        ],
+        "docs": [
+          "business_card_pcb.pdf"
+        ],
+        "images": []
+      },
+      "objectives": [
+        {
+          "code": "RES-3",
+          "reason": "Designs a custom PCB."
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": null
+    },
+    {
       "id": "cardboard_marble_run",
       "title": "Cardboard Marble Run",
       "description": "Build a marble run out of cardboard",
@@ -90,6 +114,32 @@
         {
           "code": "DMF-5",
           "reason": "Techniques such as scoring to bend, strategic use of hot-glue, and utilizing support structures to allow for specific routes were all used."
+        }
+      ],
+      "status": "complete",
+      "visibility": "public",
+      "github": null
+    },
+    {
+      "id": "competition_base",
+      "title": "Competition Base",
+      "description": "Designs a custom robotic base for a competition-style robot. Powered by a Particle Argon.",
+      "course": "RBT353",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/embed/rguVzqBqxHY"
+        ],
+        "docs": [],
+        "images": []
+      },
+      "objectives": [
+        {
+          "code": "RES-4",
+          "reason": "four"
+        },
+        {
+          "code": "RES-6",
+          "reason": "Designs a custom PCB."
         }
       ],
       "status": "complete",
