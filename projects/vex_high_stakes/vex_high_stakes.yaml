@@ -1,13 +1,14 @@
-id: vex
-title: Vex
+id: vex_high_stakes
+title: Vex High Stakes
 description: Designed a robot to compete in the Vex robotics competition.
 course: PDS300
 media:
   docs: []
   images: []
-  videos: []
+  videos:
+    - https://youtu.be/Sx6HJSpopeQ
 objectives:
   - code: DMF-3
     reason: Worked in a team to design and build a robot
-status: in-progress
+status: complete
 visibility: public

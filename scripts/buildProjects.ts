@@ -214,6 +214,8 @@ async function fetchGitHubStats(query: string) {
 }
 
 function normalizeRepos(data: Record<string, Repo>): Repo[] {
+  if (data == undefined) return [];
+
   return Object.values(data);
 }
 

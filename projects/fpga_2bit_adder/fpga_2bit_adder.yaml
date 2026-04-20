@@ -1,0 +1,13 @@
+id: fpga_2bit_adder
+title: FPGA 2-bit Adder
+description: Template description
+course: RBT131
+media:
+  docs: []
+  images: []
+  videos: []
+objectives:
+  - code: RES-5
+    reason: logic
+status: in-progress
+visibility: public

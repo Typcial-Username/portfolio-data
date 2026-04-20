@@ -1,0 +1,12 @@
+id: 4bit_adder
+title: 4-bit Adder
+description: Template description
+course: RBT131
+media:
+  docs: []
+  images: []
+objectives:
+  - code: RES-5
+    reason: logic
+status: in-progress
+visibility: public
