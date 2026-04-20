@@ -9,7 +9,7 @@ media:
     - https://youtube.com/shorts/HfrW362TI20
 objectives:
   - code: RES-4
-    reason: Showcases random quotes from the Quotable API and can automatically get new quotes on an interval.
+    reason: Integrates hardware and software by utilizing the M5Stack Core2 display as an output interface to present dynamically retrieved data. The system connects to the Quotable API to fetch random quotes and updates the display at defined intervals, demonstrating interaction between network-based data sources and embedded hardware. This project highlights the coordination between software logic, timing control, and physical output components within an embedded system. By automating content retrieval and display, it reflects how embedded devices can process external data and present it to users in a meaningful and continuous manner.
 repo: Typcial-Username/CSC230-IoT
 status: complete
 visibility: public

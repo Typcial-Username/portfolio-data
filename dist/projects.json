@@ -18,7 +18,7 @@
           "reason": "Applies hardware description techniques to implement a scalable 4-bit adder on an FPGA, demonstrating how simple arithmetic units can be expanded into larger systems through modular design. The project showcases the transition from low-level logic to hardware abstraction using Verilog, including the composition of multi-bit structures and management of carry propagation. This reflects real-world digital system design practices used in processors and embedded systems, where hardware is defined, simulated, and deployed using HDL-based workflows."
         }
       ],
-      "status": "in-progress",
+      "status": "complete",
       "visibility": "public",
       "github": null
     },
@@ -165,7 +165,7 @@
       "objectives": [
         {
           "code": "RES-4",
-          "reason": "Showcases random quotes from the Quotable API and can automatically get new quotes on an interval."
+          "reason": "Integrates hardware and software by utilizing the M5Stack Core2 display as an output interface to present dynamically retrieved data. The system connects to the Quotable API to fetch random quotes and updates the display at defined intervals, demonstrating interaction between network-based data sources and embedded hardware. This project highlights the coordination between software logic, timing control, and physical output components within an embedded system. By automating content retrieval and display, it reflects how embedded devices can process external data and present it to users in a meaningful and continuous manner."
         }
       ],
       "repo": "Typcial-Username/CSC230-IoT",
@@ -229,9 +229,9 @@
       "description": "Programms a functional 2 bit adder using HDL/Verilog.",
       "course": "RBT131",
       "media": {
-        "videos": [],
-        "docs": [],
-        "images": []
+        "docs": [
+          "Creating_2_bit_adder_on_FPGA.pdf"
+        ]
       },
       "objectives": [
         {
@@ -239,7 +239,7 @@
           "reason": "Demonstrates foundational digital logic design through implementation of a 2-bit adder, including sum and carry generation using basic combinational logic. The project highlights understanding of how binary arithmetic is constructed at the gate level, forming the basis for more complex computational systems. By explicitly handling carry conditions between bits, the design reflects core principles used in arithmetic logic units and low-level processor operations."
         }
       ],
-      "status": "in-progress",
+      "status": "complete",
       "visibility": "public",
       "github": null
     },

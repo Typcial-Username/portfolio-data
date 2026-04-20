@@ -1,13 +1,12 @@
 id: fpga_2bit_adder
 title: FPGA 2-bit Adder
-description: Template description
+description: Programms a functional 2 bit adder using HDL/Verilog.
 course: RBT131
 media:
-  docs: []
-  images: []
-  videos: []
+  docs:
+    - Creating_2_bit_adder_on_FPGA.pdf
 objectives:
   - code: RES-5
-    reason: logic
-status: in-progress
+    reason: Demonstrates foundational digital logic design through implementation of a 2-bit adder, including sum and carry generation using basic combinational logic. The project highlights understanding of how binary arithmetic is constructed at the gate level, forming the basis for more complex computational systems. By explicitly handling carry conditions between bits, the design reflects core principles used in arithmetic logic units and low-level processor operations.
+status: complete
 visibility: public
