@@ -9,6 +9,6 @@ media:
     - https://youtu.be/Sx6HJSpopeQ
 objectives:
   - code: DMF-3
-    reason: Worked in a team to design and build a robot
+    reason: Demonstrates Agile and MVP development through the rapid design and iteration of a competition robot under strict time and resource constraints. The project began with a minimal viable system focused on achieving basic scoring functionality, allowing early validation of core concepts before expanding capabilities. Iterative improvements were made throughout the five-week development cycle, refining mechanism reliability, control precision, and overall system efficiency based on testing and competition feedback. Limited material availability required prioritization of essential features and creative reuse of components, reinforcing MVP principles by focusing on high-impact functionality first. The final system reflects a complete Agile workflow, where continuous iteration, constraint-driven decision making, and incremental improvements led to a competitive and award-winning design.
 status: complete
 visibility: public

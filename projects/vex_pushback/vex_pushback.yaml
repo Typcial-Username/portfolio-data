@@ -9,6 +9,6 @@ media:
     - https://youtu.be/ocmONiVun9M
 objectives:
   - code: DMF-3
-    reason: Worked in a team to design and build a robot
+    reason: Demonstrates Agile and MVP development through the iterative design and refinement of a competition robot built under limited material and time constraints. The project began with a minimal viable drivetrain and basic game interaction functionality, allowing early testing of mobility and control before expanding system capabilities. Successive iterations focused on improving structural stability, traction, and game performance based on testing outcomes and competition feedback. Resource limitations required prioritization of essential functions and efficient use of available materials, reinforcing MVP principles by focusing on core performance before refinement. The final system reflects an iterative engineering workflow that culminated in a 2nd place finish and qualification for the VEX U World Championship, validating the effectiveness of the development process under real-world competitive conditions.
 status: in-progress
 visibility: public
