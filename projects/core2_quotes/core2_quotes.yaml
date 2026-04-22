@@ -3,8 +3,6 @@ title: Core2 Quotes
 description: Displays quotes on the M5Stack Core2.
 course: CSC230
 media:
-  docs:
-    - core2_quotes.pdf
   videos:
     - https://youtube.com/shorts/HfrW362TI20
 objectives:
