@@ -10,8 +10,8 @@ media:
   modelViewer: https://a360.co/4txoSk2
 objectives:
   - code: RES-4
-    reason: Designs a custom remote-controlled robotic base for a competition. Powered by a Particle Argon, it hosts a webserver and creates a function to independently move each forward forward or backward.
+    reason: Designs and implements a remotely operated robotic system using a Particle Argon microcontroller to manage real-time motor control and user interaction. The system hosts a webserver interface that enables remote command input, allowing independent control of each motor for precise maneuverability. This demonstrates embedded system design through the integration of networking, control logic, and hardware actuation, highlighting how software-defined commands translate into coordinated physical movement. The project reflects practical control system implementation, including responsiveness, modular motor control, and user-driven operation within a robotic platform.
   - code: RES-6
-    reason: Includes a function for autonomous path following.
+    reason: Implements autonomous navigation functionality through a path-following algorithm that enables the robot to operate without direct user input. The system processes positional or directional data to make real-time movement decisions, coordinating motor outputs to follow a defined route. This demonstrates the application of algorithmic thinking in robotics, where control logic transitions from manual input to autonomous behavior. The project highlights key concepts in autonomy, including decision-making, continuous system feedback, and the integration of software algorithms with physical motion systems.
 status: complete
 visibility: public

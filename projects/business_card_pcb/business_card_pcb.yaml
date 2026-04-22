@@ -1,15 +1,12 @@
 id: business_card_pcb
 title: Business Card PCB
 description: Designs a custom PCB to be used as a business card.
-course: RBT353
+course: RBT205
 media:
   docs:
     - business_card_pcb.pdf
-  images: []
-  videos:
-    - https://youtu.be/rguVzqBqxHY
 objectives:
   - code: RES-3
-    reason: Designs a custom PCB.
+    reason: Demonstrates applied electronics and embedded system fundamentals through the design and implementation of a compact printed circuit board with interactive functionality. The project incorporates core electrical concepts including current limiting, switch-based input, and power distribution within a constrained physical layout. Component selection and circuit design decisions were made to ensure reliable operation while maintaining a minimal footprint consistent with a business card form factor. The PCB layout process required careful consideration of trace routing, spacing, and manufacturability, reinforcing practical design-for-manufacturing principles. This project reflects the integration of theoretical circuit knowledge with real-world constraints, resulting in a functional and physically realized electronic system.
 status: complete
 visibility: public

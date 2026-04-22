@@ -4,9 +4,9 @@ description: An alarm clock using ultrasonic transducers to produce directional 
 course: SIP405
 objectives:
   - code: DMF-2
-    reason: Uses a ESP32 microcontroller and ultrasonic transducers to produce directional sound.
+    reason: Integrates an embedded system and electronic components into a functional product by combining an ESP32-based controller with ultrasonic transducers to produce directional audio output. The project demonstrates the implementation of microcontroller-driven signal generation, user interface components, and audio control within a cohesive system. Multiple hardware elements, including storage, display, and sensors, are coordinated through software to achieve reliable operation and real-time responsiveness. This reflects the practical application of embedded systems in product design, where electronic components are not only included but actively integrated to deliver a unique and functional user experience.
   - code: RES-3
-    reason: Is powered by a M5Stack Core2 to handle SD Card reading for alarm files and keeping track of time. Includes a screen, micro SD card reader, gyroscope, accelerometer, and works with a ESP32 microcontroller for high-speed workloads utilizing dual cores.
+    reason: Is powered by an M5Stack Core2 to manage timekeeping, user interaction, and audio playback using an onboard ESP32 with dual-core processing for responsive performance. The system integrates multiple embedded components, including an SD card for alarm audio storage, a display for configuration, and onboard sensors such as a gyroscope and accelerometer for interaction and state awareness. It demonstrates embedded systems design through the coordination of hardware and software to produce directional audio using ultrasonic transducers, requiring precise signal control to focus sound toward a specific target. The project also balances real-time requirements such as accurate time tracking and immediate alarm response with higher-level functions like file handling and user input, reflecting practical considerations in task management and system efficiency. Overall, it represents a cohesive integration of multiple subsystems into a functional embedded solution, highlighting applied knowledge of electronics, signal control, and system-level design.
 repo: Typcial-Username/SIP
 status: in-progress
 visibility: public
