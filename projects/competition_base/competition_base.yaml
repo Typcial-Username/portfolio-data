@@ -3,10 +3,13 @@ title: Competition Base
 description: Designs a custom robotic base for a competition-style robot. Powered by a Particle Argon.
 course: RBT353
 media:
-  docs: []
-  images: []
+  docs:
+    - PCB.pdf
+  images:
+    - base.jpg
   videos:
     - https://youtu.be/rguVzqBqxHY
+    - https://youtube.com/shorts/k93tDjTrB2I?si=53UmqVkpwSMaHSZL
   modelViewer: https://a360.co/4txoSk2
 objectives:
   - code: RES-4
