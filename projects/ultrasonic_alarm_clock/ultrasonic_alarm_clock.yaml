@@ -2,6 +2,9 @@ id: ultrasonic_alarm_clock
 title: Ultrasonic Alarm Clock
 description: An alarm clock using ultrasonic transducers to produce directional sound to specifically wake specific people instead of the entire room.
 course: SIP405
+media:
+  docs:
+    - schematic.pdf
 objectives:
   - code: DMF-2
     reason: Integrates an embedded system and electronic components into a functional product by combining an ESP32-based controller with ultrasonic transducers to produce directional audio output. The project demonstrates the implementation of microcontroller-driven signal generation, user interface components, and audio control within a cohesive system. Multiple hardware elements, including storage, display, and sensors, are coordinated through software to achieve reliable operation and real-time responsiveness. This reflects the practical application of embedded systems in product design, where electronic components are not only included but actively integrated to deliver a unique and functional user experience.
