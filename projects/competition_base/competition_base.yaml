@@ -11,6 +11,7 @@ media:
     - https://youtu.be/rguVzqBqxHY
     - https://youtube.com/shorts/k93tDjTrB2I?si=53UmqVkpwSMaHSZL
   modelViewer: https://a360.co/4txoSk2
+repo: Typcial-Username/competition-base
 objectives:
   - code: RES-4
     reason: Designs and implements a remotely operated robotic system using a Particle Argon microcontroller to manage real-time motor control and user interaction. The system hosts a webserver interface that enables remote command input, allowing independent control of each motor for precise maneuverability. This demonstrates embedded system design through the integration of networking, control logic, and hardware actuation, highlighting how software-defined commands translate into coordinated physical movement. The project reflects practical control system implementation, including responsiveness, modular motor control, and user-driven operation within a robotic platform.

@@ -5,6 +5,8 @@ course: RBT211
 media:
   videos:
     - https://www.youtube.com/shorts/LI2515mfMRE
+  docs:
+    - Motor_Controller.pdf
 objectives:
   - code: RES-2
     reason: Implements microcontroller-based control of a DC motor using hardware timers, PWM signal generation, and interrupt-driven logic. The system demonstrates precise regulation of motor speed by adjusting duty cycles, allowing for smooth and consistent actuator behavior. Efficient use of embedded resources enables accurate timing control while avoiding blocking delays, supporting real-time responsiveness. Development within Microchip Studio reinforces low-level interaction with hardware and highlights an understanding of microprocessor-driven control systems.
