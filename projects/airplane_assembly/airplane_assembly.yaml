@@ -1,14 +1,16 @@
-id: airplane_asselbly
+id: airplane_assembly
 title: Airplane Assembly
-description: Template description
+description: Designed an airplane inspired by the Cessna Citation X.
 course: DBM100
-files:
-  cad: []
-  stl: []
 media:
-  docs: []
-  images: []
-  modelViewer: https://a360.co/
-objectives: []
+  images:
+    - complete_body.jpg
+    - sketch.jpg
+  modelViewer: https://a360.co/4sWWNBI
+objectives:
+  - code: DMF-1
+    reason: Printed in ABS plastic to have good UV resistance and strength.
+  - code: DMF-4
+    reason: Designed in Fusion
 status: complete
 visibility: public

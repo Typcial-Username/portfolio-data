@@ -5,6 +5,8 @@ course: BUS200
 media:
   docs:
     - BUS200_Business_Plan.pdf
+  videos:
+    - https://youtube.com/shorts/eykPj4472zs?si=MYaIzvQsVhrbH34F
   modelViewer: https://www.tinkercad.com/embed/jqb4Gj4hLUl
 objectives:
   - code: DMF-2
