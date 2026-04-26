@@ -1,10 +1,11 @@
-id: vex_pusbback
+id: vex_pushback
 title: Vex Pushback
 description: Designed a robot to compete in the Vex robotics competition.
 course: PDS400
 media:
-  docs: []
-  images: []
+  images:
+    - 20260313_153949.jpg
+    - 20260313_154018.jpg
   videos:
     - https://youtu.be/ocmONiVun9M
 objectives:

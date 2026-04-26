@@ -4,7 +4,11 @@ description: Designed a robot to compete in the Vex robotics competition.
 course: PDS300
 media:
   docs: []
-  images: []
+  images:
+    - bot2.png
+    - bot6.jpg
+    - IMG_2204.jpeg
+    - IMG_2207.jpeg
   videos:
     - https://youtu.be/Sx6HJSpopeQ
 objectives:
