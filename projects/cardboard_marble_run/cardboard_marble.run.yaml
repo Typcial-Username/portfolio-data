@@ -1,6 +1,6 @@
 id: cardboard_marble_run
 title: Cardboard Marble Run
-description: Build a marble run out of cardboard
+description: Designed and built a marble run using cardboard as the primary construction material, focusing on structural stability, flow control, and iterative design of pathways to guide marble movement.
 course: DBM215
 media:
   images:
@@ -11,8 +11,8 @@ media:
     - https://youtube.com/shorts/_YLQQtTR3QI
 objectives:
   - code: DMF-1
-    reason: This project was developed in cardboard using CAD (Cardboard-Aided Design). I learned techniques to manipulate and work with cardboard to complete projects.
+    reason: Demonstrates the use of physical prototyping tools and techniques through the construction of a functional marble run using cardboard as the primary material. The project involved translating a conceptual design into a physical structure using hands-on fabrication methods, including cutting, assembly, and iterative adjustments to improve performance. Working within the constraints of cardboard required adapting digital or conceptual ideas into practical build decisions that account for material limitations and structural behavior. This reflects the ability to use accessible materials and fabrication techniques to produce functional prototypes through iterative physical development.
   - code: DMF-5
-    reason: Techniques such as scoring to bend, strategic use of hot-glue, and utilizing support structures to allow for specific routes were all used.
+    reason: Demonstrates proficiency with prototyping techniques and fabrication methods through the structural design and assembly of a cardboard marble run. Construction required the use of scoring techniques to create controlled bends, strategic adhesive application for joint strength, and reinforcement structures to maintain stability throughout the system. These methods were applied to guide marble movement through intentional pathway design while maintaining structural integrity across multiple segments. The project highlights practical understanding of how fabrication techniques directly influence performance, durability, and functionality in physical prototypes.
 status: complete
 visibility: public

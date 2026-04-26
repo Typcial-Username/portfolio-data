@@ -10,8 +10,8 @@ media:
   modelViewer: https://www.tinkercad.com/embed/jqb4Gj4hLUl
 objectives:
   - code: DMF-2
-    reason: Designed to work in vehicles and would be offered as a product.
+    reason: Demonstrates the development of a functional electronic product intended for real-world automotive integration, requiring consideration of installation constraints, reliability, and user-facing functionality. The horn control board is designed to operate within a vehicle environment, accounting for practical factors such as power delivery, component protection, and compatibility with automotive systems. By targeting the project for potential productization, the design extends beyond prototype-level functionality and incorporates real-world use case considerations. This reflects the ability to engineer embedded electronic systems into practical, deployable consumer products.
   - code: DMF-5
-    reason: Uses a soundboard module, amplifier, and speaker to produce audible sound.
+    reason: Demonstrates proficiency in prototyping and integrating electronic subsystems through the implementation of a soundboard module, amplifier, and speaker into a cohesive audio output system. The project requires selection and coordination of multiple hardware components to ensure reliable signal flow, amplification, and sound reproduction. Integration of these components into a functional control board reflects practical experience in electronic assembly, subsystem interfacing, and prototype development. This showcases the ability to combine discrete modules into a polished and operational hardware solution.
 status: complete
 visibility: public

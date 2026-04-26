@@ -9,8 +9,8 @@ media:
   modelViewer: https://a360.co/4sWWNBI
 objectives:
   - code: DMF-1
-    reason: Printed in ABS plastic to have good UV resistance and strength.
+    reason: Demonstrates the use of digital and physical fabrication tools to engineer and produce a physical prototype of an aircraft-inspired assembly. The design was translated from CAD into a manufactured part using additive manufacturing, requiring consideration of printability, tolerances, and part segmentation where necessary. ABS was selected as the fabrication material due to its favorable strength, durability, and UV resistance characteristics, aligning material choice with the intended use of the final prototype. This reflects the full workflow of moving from digital concept to engineered physical prototype through appropriate fabrication and material decisions.
   - code: DMF-4
-    reason: Designed in Fusion
+    reason: Evaluates design and fabrication considerations through the digital modeling and structural planning of a complex multi-component aircraft assembly in Fusion 360. The project required consideration of part geometry, assembly relationships, and manufacturability to ensure the design could be accurately fabricated and assembled as a physical prototype. Structural and aesthetic features were balanced to maintain fidelity to the Citation X inspiration while remaining practical for additive manufacturing. This demonstrates the ability to apply digital design tools in conjunction with fabrication-aware engineering decision making.
 status: complete
 visibility: public

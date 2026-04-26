@@ -13,6 +13,6 @@ media:
   modelViewer: https://a360.co/3XEdLau
 objectives:
   - code: DMF-6
-    reason: Designed to clip onto a belt.
+    reason: Demonstrates consideration of form, function, and human factors through the design of a wearable belt clip intended for practical daily use. The geometry of the clip was developed to ensure secure attachment to a belt while maintaining ease of use for repeated attachment and removal. Design decisions account for ergonomic interaction, including how the user grips and applies force to the clip during use. The integration of McMaster-Carr hardware ensures mechanical reliability while influencing overall form and structural design. This project reflects the balance between functional performance, user interaction, and physical design constraints typical of consumer product development.
 status: complete
 visibility: public
